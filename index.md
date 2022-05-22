@@ -7,6 +7,9 @@
 ## CSS3
 
 ## HTML5
+- defer/async. (sync) => (defer) => (DOMContentLoaded) => (async/module? 可能在onload前的任何时刻，甚至早于defer) => (onload)
+- cookie
+- 跨域
 
 ## JS原理
 ### 事件循环
@@ -94,6 +97,12 @@ shared：共享的模块，一般为第三方库，可指定版本
 ### git
 
 ## 性能监控/优化
+#### 资源加载
+- link rel =
+  + dns-prefetch 预先解析dns，只对第三方网站有意义，本站已经解析过
+  + preconnect dns+tcp+tls
+  + prefetch 预先加载暂时用不到，但接下来可能会需要的，lowest，浏览器空闲时进行
+  + preload 预先加载接下来需要的，比如css中引用的其他文件
 
 ## Nodejs
 ### Koa/Express
