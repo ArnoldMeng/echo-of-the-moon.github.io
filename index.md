@@ -10,12 +10,24 @@
 - defer/async. (sync) => (defer) => (DOMContentLoaded) => (async/module? 可能在onload前的任何时刻，甚至早于defer) => (onload)
 - cookie
 - 跨域
+- shadow dom
+- web component
+- web worker/ shared worker
+- service worker 基于web worker的缓存能力，监听fetch事件，相关库有workbox，参考[文章](https://mp.weixin.qq.com/s/3Ep5pJULvP7WHJvVJNDV-g)
 
 ## JS原理
 ### 事件循环
 - js单线程，保证dom操作的可靠性
 - [setTimeout时延](https://zhuanlan.zhihu.com/p/155752686) 对于chrome，setTimeout(f, 1) 等价于 setTimeout(f, 0)，此外其他相隔1ms的timeout是不可靠的，很容易超时
 - [MutationObserver](https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserver)
+#### 调用栈 堆
+在执行环境中，每进入一个函数，就会将其加入栈顶，执行完毕后pop；基本类型和引用在此保存；引用值在堆保存
+#### GC
+double buffering
+#### v8流程 [参考](https://zhuanlan.zhihu.com/p/491369553)
+1. parse 解析源码为AST。（pre-parse优化：对于不需要立即执行的代码，可以先简单识别其函数定义等，等后面再完整解析）
+2. 解释器 Ignition 将AST转为字节码。随后转为对应平台的机器码执行。同时会统计Hot Code
+3. JIT TurboFan 将Hot Code的字节码优化编译。之后直接执行记录的机器码
 
 ## 浏览器工作原理
 ### url访问
